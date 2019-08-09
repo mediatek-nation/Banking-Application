@@ -24,11 +24,11 @@ const CustomerSchema = new Schema({
     type: String
   },
   loanAmount: {
-    type: Number
+    type: String
   },
   currentStatus: {
     type: String,
-    default: "created" // cibilScore   loanApproved    finish
+    default: "created" // pendingForCibileScore cibilScoreComplete    loanApproved    finish
   },
   agentId: {
     type: String
@@ -37,7 +37,7 @@ const CustomerSchema = new Schema({
     type: String
   },
   applyDate: {
-    type: Date
+    type: String
   }
 });
 module.exports = Customer = mongoose.model("customer", CustomerSchema);

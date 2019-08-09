@@ -1,16 +1,16 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 // Create a schema for bonus
 const BonusSchema = new Schema({
   creditPoint: {
-    type: Number
+    type: String
   },
   bonusCreditPoint: {
-    type: Number
+    type: String
   },
   agentLabel: {
     type: String
   }
 });
-module.exports = Bonus = mongoose.model('bonus', BonusSchema);
+module.exports = Bonus = mongoose.model("bonus", BonusSchema);

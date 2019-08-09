@@ -2,7 +2,8 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 // Create a schema for agent
-const AgentSchema = new Schema({
+const AgentSchema = new Schema(
+  {
   name: {
     type: String
   },
@@ -18,7 +19,7 @@ const AgentSchema = new Schema({
     type: Number
   },
   currentCreditPoint: {
-    type: Number
+    type: String
   },
   labels: {
     type: String

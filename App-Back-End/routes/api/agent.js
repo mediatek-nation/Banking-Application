@@ -16,11 +16,12 @@ const passport = require("passport");
 // Load model
 const Agent = require("../../models/Agent");
 const keys = require("../../config/keys");
+const Product = require("../../models/Product");
 
 //@route  GET api/agent/test
 //@dscn   Test the agent route
 //@access Public
-router.get("/", (req, res) => res.json("Agent page working"));
+router.get("/test", (req, res) => res.json("Agent page working"));
 
 //@route  POST api/agent/register
 //@dscn   Register the agent route
@@ -36,7 +37,9 @@ router.post("/register", (req, res) => {
         name: req.body.name,
         email: req.body.email,
         password: req.body.password,
-        mobile: req.body.mobile
+        mobile: req.body.mobile,
+        currentCreditPoint: "",
+        labels: ""
       });
 
       // Generating hashing password
@@ -99,7 +102,7 @@ router.post("/login", (req, res) => {
 //@dscn   Update the records in admin route
 //@access Private
 router.post(
-  "/update:id",
+  "/update/:id",
   //passport.authenticate("jwt", { session: false }),
   (req, res) => {
     let id = req.params.id;
@@ -118,9 +121,22 @@ router.post(
 //@route  GET api/agent/delete
 //@dscn   Delete the agent profile
 //@access Private
+router.get("/delete/:id", (req, res) => {
+  // Delete agent profile
+  Agent.deleteOne({ _id: req.params.id }).then(profile =>
+    res.json({ msg: "Deleted successfully" })
+  );
+});
+
+//@route  GET api/agent/allProduct
+//@dscn   Agent can view all product
+//@access Private
+router.get("/allProduct", (req, res) => {
+  Product.find().then(product => res.json(product));
+});
 
 //@route  GET api/agent/current
-//@dscn   Who is logedIn in the admin route
+//@dscn   Who is logedIn in agent profile
 //@access Private
 router.get(
   "/current",

@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 // Create a schema for admin
@@ -18,8 +18,11 @@ const AdminSchema = new Schema({
     type: Number
   },
   joiningDate: {
+    type: String
+  },
+  Date: {
     type: Date,
     default: Date.now
   }
 });
-module.exports = Admin = mongoose.model('admin', AdminSchema);
+module.exports = Admin = mongoose.model("admin", AdminSchema);

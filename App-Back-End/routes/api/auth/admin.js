@@ -115,6 +115,11 @@ router.post(
 //@route  GET api/auth/delete
 //@dscn   To delete admin profile
 //@access Private
+router.get("/delete/:id", (req, res) => {
+  Admin.deleteOne({ _id: req.params.id }).then(profile =>
+    res.json({ msg: "Admin profile delete successfully..!" })
+  );
+});
 
 //@route  GET api/auth/current
 //@dscn   Who is logedIn in the admin route
